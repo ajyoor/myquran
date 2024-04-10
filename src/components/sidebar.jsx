@@ -1,7 +1,7 @@
 "use client";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
-import { BookOpen, LayoutDashboard, Clock, CookingPot } from "lucide-react";
+import { BookOpen, LayoutDashboard, Clock, NotebookText } from "lucide-react";
 
 const NavItems = [
   {
@@ -13,12 +13,12 @@ const NavItems = [
     link: "/Content/Quran/Surat/1",
   },
   {
-    icon: <Clock />,
-    link: "/Content/Adzan",
+    icon: <NotebookText />,
+    link: "/Content/Doa",
   },
   {
-    icon: <CookingPot />,
-    link: "/Content/Recipe",
+    icon: <Clock />,
+    link: "/Content/Adzan",
   },
 ];
 
