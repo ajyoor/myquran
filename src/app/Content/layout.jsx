@@ -1,7 +1,6 @@
 import { Suspense } from "react";
 import Header from "@/components/header";
 import Sidebar from "@/components/sidebar";
-import { Skeleton } from "@/components/ui/skeleton";
 export default function ContentLayout({ children }) {
   return (
     <div>

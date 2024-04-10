@@ -115,6 +115,8 @@
 /* width */
 .scroll-card::-webkit-scrollbar {
   width: 3px;
+  background: #888;
+
 }
 
 /* Handle */
@@ -127,6 +129,52 @@
 .scroll-card::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
+
+/* width */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  border-radius: 10px;
+  /* background: #1E293B; */
+  background: transparent;
+
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background: #0D1423;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.scroll-card::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.scroll-card,
+.scroll-card::-webkit-scrollbar {
+  -ms-overflow-style: none; /* IE and Edge */
+  scrollbar-width: none; /* Firefox */
+  display: none;
+}
+
+/* html {
+  overflow: scroll;
+  overflow-x: hidden;
+}
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+} */
 
 .link.active {
   background: #7ac4be !important;

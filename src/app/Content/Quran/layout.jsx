@@ -1,4 +1,3 @@
-import { Suspense } from "react";
 import SidecardContent from "./sidecardContent";
 const SideQuran = ({ children }) => {
   return (

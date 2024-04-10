@@ -1,22 +1,13 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
-import { Search } from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
-import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import axios from "axios";
 import Link from "next/link";
 import { usePathname, useParams } from "next/navigation";
 import { Skeleton } from "@/components/ui/skeleton";
+import { TbReportOff } from "react-icons/tb";
 
 const url = process.env.NEXT_PUBLIC_BASE_URL;
 
@@ -44,13 +35,14 @@ const sidecardContent = () => {
 
   const getListSearch = (e) => {
     let val = e.target.value.toLowerCase();
+    let notfound = ["Tidak ditemukan data"];
     const filteredItems = filterList.filter((key) =>
       `${type.slug[0] == "Surat" ? key.name_id : key.name}`
         .toLowerCase()
         .includes(val)
     );
 
-    setList(filteredItems);
+    setList(filteredItems.length ? filteredItems : notfound);
   };
 
   const HandleClick = (type) => {
@@ -92,43 +84,52 @@ const sidecardContent = () => {
                   <div className=" flex  flex-col space-y-1 gap-5 h-[450px] w-[280px] scroll-smooth overflow-auto pr-[10px]">
                     {list ? (
                       list.map((key, index) => {
-                        return (
-                          <Link
-                            href={`/Content/Quran/Surat/${key.number}`}
-                            key={index}
-                          >
-                            <div
-                              className={`flex items-center gap-7 scroll-pt-2 snap-start ${
-                                linkID == key.number ? "side-active" : ""
-                              }`}
+                        if (key.number) {
+                          return (
+                            <Link
+                              href={`/Content/Quran/Surat/${key.number}`}
+                              key={index}
                             >
                               <div
-                                className={`selector-content w-[40px] h-[30px] ${
-                                  linkID == key.number
-                                    ? "bg-[#7ac4be]"
-                                    : "bg-slate-800"
-                                } rounded-md rotate-45 ml-1 active relative`}
+                                className={`flex items-center gap-7 scroll-pt-2 snap-start ${
+                                  linkID == key.number ? "side-active" : ""
+                                }`}
                               >
-                                <span className="flex items-center justify-center h-full rotate-[315deg] text-sm ">
-                                  {key.number}
-                                </span>
-                              </div>
-                              <div className="flex items-center justify-between w-full">
-                                <div className="flex flex-col">
-                                  <span className="font-bold text-[16px]">
-                                    {key.name_id}
-                                  </span>
-                                  <span className="font-thin text-[14px]">
-                                    {key.translation_id}
+                                <div
+                                  className={`selector-content w-[40px] h-[30px] ${
+                                    linkID == key.number
+                                      ? "bg-[#7ac4be]"
+                                      : "bg-slate-800"
+                                  } rounded-md rotate-45 ml-1 active relative`}
+                                >
+                                  <span className="flex items-center justify-center h-full rotate-[315deg] text-sm ">
+                                    {key.number}
                                   </span>
                                 </div>
-                                <span className="font-thin text-[14px]">
-                                  {key.name_short}
-                                </span>
+                                <div className="flex items-center justify-between w-full">
+                                  <div className="flex flex-col">
+                                    <span className="font-bold text-[16px]">
+                                      {key.name_id}
+                                    </span>
+                                    <span className="font-thin text-[14px]">
+                                      {key.translation_id}
+                                    </span>
+                                  </div>
+                                  <span className="font-thin text-[14px]">
+                                    {key.name_short}
+                                  </span>
+                                </div>
                               </div>
+                            </Link>
+                          );
+                        } else {
+                          return (
+                            <div className="flex flex-col items-center justify-center m-auto text-[20px] font-bold gap-3">
+                              <TbReportOff size="50px"></TbReportOff>
+                              {key}
                             </div>
-                          </Link>
-                        );
+                          );
+                        }
                       })
                     ) : (
                       <>
@@ -162,43 +163,52 @@ const sidecardContent = () => {
                   <div className=" flex  flex-col space-y-1 gap-5 h-[450px] w-[280px] scroll-smooth overflow-auto pr-[10px]">
                     {list ? (
                       list.map((key, index) => {
-                        return (
-                          <Link
-                            href={`/Content/Quran/Juz/${key.number}`}
-                            key={index}
-                          >
-                            <div
-                              className={`flex items-center gap-7 scroll-pt-2 snap-start ${
-                                linkID == key.number ? "side-active" : ""
-                              }`}
+                        if (key.number) {
+                          return (
+                            <Link
+                              href={`/Content/Quran/Juz/${key.number}`}
+                              key={index}
                             >
                               <div
-                                className={`selector-content w-[40px] h-[30px] ${
-                                  linkID == key.number
-                                    ? "bg-[#7ac4be]"
-                                    : "bg-slate-800"
-                                } rounded-md rotate-45 ml-1 active relative`}
+                                className={`flex items-center gap-7 scroll-pt-2 snap-start ${
+                                  linkID == key.number ? "side-active" : ""
+                                }`}
                               >
-                                <span className="flex items-center justify-center h-full rotate-[315deg] text-sm ">
-                                  {key.number}
-                                </span>
-                              </div>
-                              <div className="flex items-center justify-between w-full">
-                                <div className="flex flex-col">
-                                  <span className="font-bold text-[16px]">
-                                    {key.name}
-                                  </span>
-                                  <span className="font-thin text-[14px]">
-                                    {key.name_start_id} - {key.name_end_id}
+                                <div
+                                  className={`selector-content w-[40px] h-[30px] ${
+                                    linkID == key.number
+                                      ? "bg-[#7ac4be]"
+                                      : "bg-slate-800"
+                                  } rounded-md rotate-45 ml-1 active relative`}
+                                >
+                                  <span className="flex items-center justify-center h-full rotate-[315deg] text-sm ">
+                                    {key.number}
                                   </span>
                                 </div>
-                                {/* <span className="font-thin text-[14px]">
-                                {key.name}
-                              </span> */}
+                                <div className="flex items-center justify-between w-full">
+                                  <div className="flex flex-col">
+                                    <span className="font-bold text-[16px]">
+                                      {key.name}
+                                    </span>
+                                    <span className="font-thin text-[14px]">
+                                      {key.name_start_id} - {key.name_end_id}
+                                    </span>
+                                  </div>
+                                  {/* <span className="font-thin text-[14px]">
+                                  {key.name}
+                                </span> */}
+                                </div>
                               </div>
+                            </Link>
+                          );
+                        } else {
+                          return (
+                            <div className="flex flex-col items-center justify-center m-auto text-[20px] font-bold gap-3">
+                              <TbReportOff size="50px"></TbReportOff>
+                              {key}
                             </div>
-                          </Link>
-                        );
+                          );
+                        }
                       })
                     ) : (
                       <>
