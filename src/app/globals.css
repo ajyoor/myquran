@@ -116,7 +116,6 @@
 .scroll-card::-webkit-scrollbar {
   width: 3px;
   background: #888;
-
 }
 
 /* Handle */
@@ -140,13 +139,12 @@
   border-radius: 10px;
   /* background: #1E293B; */
   background: transparent;
-
 }
 
 /* Handle */
 ::-webkit-scrollbar-thumb {
   border-radius: 10px;
-  background: #0D1423;
+  background: #0d1423;
 }
 
 /* Handle on hover */
@@ -154,19 +152,7 @@
   background: #555;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.scroll-card::-webkit-scrollbar {
-  display: none;
-}
-
-/* Hide scrollbar for IE, Edge and Firefox */
-.scroll-card,
-.scroll-card::-webkit-scrollbar {
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
-  display: none;
-}
-
+/* for disable scroll  */
 /* html {
   overflow: scroll;
   overflow-x: hidden;
@@ -180,4 +166,22 @@
   background: #7ac4be !important;
   border: none;
   border-radius: 0.5rem;
+}
+
+.clamp-main-title {
+  font-size: clamp(60px, 70px, 85px);
+}
+.clamp-main-sub-title {
+  font-size: clamp(22px, 23px, 25px);
+}
+/* html, body {
+    height: 100%; width: 100%;
+} */
+
+/* And perhaps adding this if you're not using any reset CSS */
+/* html, body {
+    margin: 0; padding: 0;
+} */
+* {
+    margin: 0;
 }

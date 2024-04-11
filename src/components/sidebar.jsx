@@ -27,7 +27,7 @@ const sidebar = () => {
   const linkID = pathname.split("/").slice(1, 3)[1];
 
   return (
-    <div className=" lg:flex hidden h-screen w-fit bg-gray-900 opacity-75 px-3 relative">
+    <div className=" lg:flex hidden h-full w-fit bg-gray-900 opacity-75 px-3 relative">
       <div className="rounded-corner-content"></div>
       <div className="flex items-center gap-10 flex-col m-auto">
         {NavItems.map((key, index) => {

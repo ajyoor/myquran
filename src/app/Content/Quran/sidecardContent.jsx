@@ -78,7 +78,7 @@ const sidecardContent = () => {
                   onChange={(e) => getListSearch(e)}
                 />
               </div>
-              <Card className="rounded-lg h-[480px]">
+              <Card className="rounded-lg ">
                 <CardContent className="space-y-2 px-3 py-3">
                   {/* <div className=" flex  flex-col space-y-1 gap-5 h-[450px] w-[280px] scroll-smooth focus:scroll-auto overflow-auto hover:overflow-y-scroll snap-y scroll-card pr-[10px]"> */}
                   <div className=" flex  flex-col space-y-1 gap-5 h-[450px] w-[280px] scroll-smooth overflow-auto pr-[10px]">
@@ -157,7 +157,7 @@ const sidecardContent = () => {
                   onChange={(e) => getListSearch(e)}
                 />
               </div>
-              <Card className="rounded-lg h-[480px]">
+              <Card className="rounded-lg ">
                 <CardContent className="space-y-2 px-3 py-3">
                   {/* <div className=" flex  flex-col space-y-1 gap-5 h-[450px] w-[280px] scroll-smooth focus:scroll-auto overflow-auto hover:overflow-y-scroll snap-y scroll-card pr-[10px]"> */}
                   <div className=" flex  flex-col space-y-1 gap-5 h-[450px] w-[280px] scroll-smooth overflow-auto pr-[10px]">
