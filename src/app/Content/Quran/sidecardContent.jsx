@@ -98,7 +98,7 @@ const sidecardContent = () => {
                                 <div
                                   className={`selector-content w-[40px] h-[30px] ${
                                     linkID == key.number
-                                      ? "bg-[#7ac4be]"
+                                      ? "bg-[#FFD369]"
                                       : "bg-slate-800"
                                   } rounded-md rotate-45 ml-1 active relative`}
                                 >
@@ -177,7 +177,7 @@ const sidecardContent = () => {
                                 <div
                                   className={`selector-content w-[40px] h-[30px] ${
                                     linkID == key.number
-                                      ? "bg-[#7ac4be]"
+                                      ? "bg-[#FFD369]"
                                       : "bg-slate-800"
                                   } rounded-md rotate-45 ml-1 active relative`}
                                 >

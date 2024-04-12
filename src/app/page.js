@@ -33,7 +33,7 @@ export default function Home() {
           </span>
           {/* <span className="text-[20px] text-right">{bacaan.ayat.latin}</span> */}
           <span
-            className="clamp-main-sub-title italic text-center pt-10 pb-4 font-bold text-[#393E46]"
+            className="clamp-main-sub-title italic text-center py-4 font-bold text-[#393E46]"
             data-aos="fade-down"
             data-aos-duration="3000"
           >

@@ -163,25 +163,14 @@
 } */
 
 .link.active {
-  background: #7ac4be !important;
+  background: #FFD369 !important;
   border: none;
   border-radius: 0.5rem;
 }
 
 .clamp-main-title {
-  font-size: clamp(60px, 70px, 85px);
+  font-size: clamp(30px, 40px, 50px);
 }
 .clamp-main-sub-title {
-  font-size: clamp(22px, 23px, 25px);
-}
-/* html, body {
-    height: 100%; width: 100%;
-} */
-
-/* And perhaps adding this if you're not using any reset CSS */
-/* html, body {
-    margin: 0; padding: 0;
-} */
-* {
-    margin: 0;
+  font-size: clamp(15px, 20px, 25px);
 }

@@ -56,7 +56,7 @@ const components = [
 
 const header = () => {
   return (
-    <div className="flex justify-between sm:pl-0 items-center flex-wrap bg-gray-900 opacity-75 p-3 fixed w-full">
+    <div className="flex justify-between sm:pl-0 items-center flex-wrap bg-gray-900 p-3 fixed w-full">
       <Sidebar className="lg:block hidden"></Sidebar>
       <NavigationMenu className="lg:hidden">
         <NavigationMenuList>
