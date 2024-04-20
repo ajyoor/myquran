@@ -15,6 +15,7 @@ import {
   navigationMenuTriggerStyle,
 } from "@/components/ui/navigation-menu";
 import { cn } from "@/lib/utils";
+import { useToast } from "@/components/ui/use-toast";
 
 const components = [
   {
@@ -55,6 +56,8 @@ const components = [
 ];
 
 const header = () => {
+  const { toast } = useToast();
+
   return (
     <div className="flex justify-between sm:pl-0 items-center flex-wrap bg-gray-900 p-3 fixed w-full">
       <Sidebar className="lg:block hidden"></Sidebar>
@@ -81,14 +84,48 @@ const header = () => {
         </NavigationMenuList>
       </NavigationMenu>
       <div className="flex w-full sm:w-auto max-w-sm items-center space-x-2">
-        <Input type="email" placeholder="Cari Surat/Juz Al-Quran" />
-        <Button type="submit" size="sm">
+        <Input
+          type="email"
+          placeholder="Cari Surat/Juz Al-Quran"
+          onFocus={() => {
+            toast({
+              title: "Coming Soon !",
+              description: "Fitur ini akan tersedia dalam waktu dekat",
+            });
+          }}
+        />
+        <Button
+          type="submit"
+          size="sm"
+          onClick={() => {
+            toast({
+              title: "Coming Soon !",
+              description: "Fitur ini akan tersedia dalam waktu dekat",
+            });
+          }}
+        >
           <Search className="sm:w-[20px]" />
         </Button>
       </div>
       <div className="sm:hidden flex items-center gap-5">
-        <ModeToggle />
-        <Button variant="outline" size="icon">
+        <ModeToggle
+          onClick={() => {
+            toast({
+              title: "Coming Soon !",
+              description: "Fitur ini akan tersedia dalam waktu dekat",
+            });
+          }}
+        />
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={() => {
+            toast({
+              title: "Coming Soon !",
+              description: "Fitur ini akan tersedia dalam waktu dekat",
+            });
+          }}
+        >
           <Bolt />
         </Button>
       </div>
