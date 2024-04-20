@@ -31,7 +31,7 @@ const page = () => {
     <div>
       <Card className="w-full pt-6 h-full">
         {kategori.length ? (
-          <ToggleGroup type="single">
+          <ToggleGroup type="single" defaultValue={kategori[0]}>
             {kategori.map((item, index) => {
               return (
                 <ToggleGroupItem

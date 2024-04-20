@@ -9,76 +9,94 @@ const url = process.env.NEXT_PUBLIC_BASE_URL;
 const page = () => {
   const [pencarian, setPencarian] = useState([]);
   const [adzan, setAdzan] = useState();
+  const refSearch = useRef(null);
 
-  const getAdzan = async () => {
+  const getAdzan = async (id = 1632) => {
+    setPencarian();
     let date = new Date()
       .toISOString()
       .substring(0, new Date().toISOString().indexOf("T"));
     await axios
-      .get(`${url}sholat/jadwal/1632/${date}`)
+      .get(`${url}sholat/jadwal/${id}/${date}`)
       .then((key) => setAdzan(key.data.data));
   };
 
   const getDataSearchAdzan = async (val) => {
     await axios
       .get(`${url}sholat/kota/cari/${val}`)
-      .then((key) => console.log(key.data.data));
+      .then((key) => setPencarian(key.data.data));
+  };
+
+  const setSearchLokasi = async (key) => {
+    getAdzan(key.id);
+    refSearch.current.value = "";
   };
 
   useEffect(() => {
     getAdzan();
+    console.log(refSearch);
   }, []);
 
   return (
     <div>
-      ADZAN BOLO
       <Card className="w-full pt-6 h-full">
-        <CardContent className="flex flex-col text-left overflow-auto h-[400px] pt-8">
-          <div className="flex w-full sm:w-auto max-w-sm items-center space-x-2">
-            <Input
-              type="email"
-              placeholder="Cari Wilayah Kota Anda"
-              onChange={(e) => getDataSearchAdzan(e.target.value)}
-            />
-            <Button type="submit" size="sm">
-              {/* <Search className="sm:w-[20px]" /> */}
-            </Button>
-          </div>
-          {pencarian
-            ? pencarian.map((key, index) => {
-                <div key={index}>
-                  <span>{key.id}</span>
+        <CardContent className="flex flex-col text-left pt-8">
+          {/* <div className="flex w-full sm:w-auto max-w-sm items-center space-x-2"> */}
+          <Input
+            className="w-full my-3"
+            type="text"
+            placeholder="Cari Wilayah Kota Anda"
+            onChange={(e) => getDataSearchAdzan(e.target.value)}
+            ref={refSearch}
+          />
+          {/* </div> */}
+          {pencarian &&
+            pencarian.map((key) => {
+              return (
+                <div
+                  key={key.id}
+                  className="cursor-pointer"
+                  onClick={() => setSearchLokasi(key)}
+                >
                   <span>{key.lokasi}</span>
-                </div>;
-              })
-            : "loading search data...."}
+                </div>
+              );
+            })}
           {adzan ? (
-            <div className="flex flex-col gap-2">
-              <span>
-                {adzan.lokasi} - {adzan.daerah}
-              </span>
-              {adzan.jadwal.tanggal}
-              <span className="font-bold text-lg">
-                Imsak {adzan.jadwal.imsak}
-              </span>
-              <span className="font-bold text-lg">
-                Subuh {adzan.jadwal.subuh}
-              </span>
-              <span className="font-bold text-lg">
-                Dhuha {adzan.jadwal.dhuha}
-              </span>
-              <span className="font-bold text-lg">
-                Dzuhur {adzan.jadwal.dzuhur}
-              </span>
-              <span className="font-bold text-lg">
-                Ashar {adzan.jadwal.ashar}
-              </span>
-              <span className="font-bold text-lg">
-                Maghrib {adzan.jadwal.maghrib}
-              </span>
-              <span className="font-bold text-lg">
-                Isya {adzan.jadwal.isya}
-              </span>
+            <div className="flex gap-2 w-full">
+              <Card className="rounded-[10px] w-full">
+                <CardContent className="grid gap-4">
+                  <span>
+                    {adzan.lokasi} - {adzan.daerah}
+                  </span>
+                  {adzan.jadwal.tanggal}
+                </CardContent>
+              </Card>
+
+              {/* <Card className="w-full rounded-[10px]">
+                <CardContent className="grid grid-cols-2 gap-4"> */}
+              <div className="grid grid-cols-3 gap-3 w-full">
+                <div className="font-bold text-lg border rounded flex flex-col w-[200px] h-[200px] items-center justify-center">
+                  <span>Imsak</span> {adzan.jadwal.imsak}
+                </div>
+                <div className="font-bold text-lg border rounded flex flex-col w-[200px] h-[200px] items-center justify-center">
+                  <span>Subuh</span> {adzan.jadwal.subuh}
+                </div>
+                <div className="font-bold text-lg border rounded flex flex-col w-[200px] h-[200px] items-center justify-center">
+                  <span>Dzuhur</span> {adzan.jadwal.dzuhur}
+                </div>
+                <div className="font-bold text-lg border rounded flex flex-col w-[200px] h-[200px] items-center justify-center">
+                  <span>Ashar</span> {adzan.jadwal.ashar}
+                </div>
+                <div className="font-bold text-lg border rounded flex flex-col w-[200px] h-[200px] items-center justify-center">
+                  <span>Maghrib</span> {adzan.jadwal.maghrib}
+                </div>
+                <div className="font-bold text-lg border rounded flex flex-col w-[200px] h-[200px] items-center justify-center">
+                  <span>Isya</span> {adzan.jadwal.isya}
+                </div>
+              </div>
+              {/* </CardContent>
+              </Card> */}
             </div>
           ) : (
             "loading..."
